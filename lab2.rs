@@ -3,15 +3,14 @@ use std::io;
 fn main() {
     // Задание №1.2
     println!("Задание №1.2");
-    let string = "abc1231de45f42"; // abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+    let string = "abc1231de45f42"; // введённая строка
     let mut max_sum = 0;
     let mut numb = 0;
 
     for char in string.chars() {
-        let a = char as u8;
+        let a = char as u8; // преобразование в целое число (8 бит безнаковое)
         if ('0' as u8 <= a && a <= '9' as u8) { // Проверка на цифру
             numb += (a - '0' as u8) as i32;
-            println!("{} {}", a - '0' as u8, numb);
         } else {
             if max_sum < numb {
                 max_sum = numb;
@@ -50,7 +49,7 @@ fn main() {
         grad.push(a_f);
     }
 
-    // Вывод значений grad
+    // Вывод значений grad с помощью цикла
     for &g in &grad {
         print!("{} ", g);
     }
@@ -59,6 +58,10 @@ fn main() {
     // Логика для подсчета шагов
     let mut i = 0;
     while i < grad.len() - 1 {
+        if leika_old < grad[i + 1]{
+            println!("Ошибка");
+            return;
+        }
         if leika_now >= grad[i + 1] {
             i += 1;
             leika_now -= grad[i];
@@ -74,20 +77,16 @@ fn main() {
     }
 
     // Вывод значений grad после обработки
-    for &g in &grad {
-        print!("{} ", g);
-    }
-    println!();
     println!("{}", steps);
 
     // Задание №3.18
     println!("Задание №3.18");
     println!("Кол-во чисел: ");
-    let mut n = String::new();
-    io::stdin().read_line(&mut n); //.unwrap()
-    let n: usize = n.trim().parse().unwrap();
+    let mut n = String::new(); //инициализация n как строки
+    io::stdin().read_line(&mut n); //ввод в строку n
+    let n: usize = n.trim().parse().unwrap(); // преобразование n в число
     
-    for _ in 0..n {
+    for s in 0..n {
         println!("Введите число: ");
         let mut num = String::new();
         io::stdin().read_line(&mut num);

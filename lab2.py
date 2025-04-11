@@ -1,13 +1,12 @@
 # Задание №1.2
 print("Задание №1.2")
-input_string = "abc1231de45f42"  # abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+input_string = "abc1231de45f42"  # введённая строка
 max_sum = 0
 numb = 0
 for char in input_string:
     a = ord(char)
     if '0' <= char <= '9':  # Проверка на цифру
         numb += a - ord('0')
-        print(a - ord('0'), " ", numb)
     else:
         if max_sum < numb:
             max_sum = numb
@@ -42,9 +41,12 @@ if a_f > 0:
 # Вывод значений grad
 print(" ".join(map(str, grad)))
 
-# Логика для подсчета шагов
+# подсчет шагов
 i = 0
 while i < len(grad) - 1:
+    if leika_old < grad[i+1]:
+        print("Ошибка")
+        break
     if leika_now >= grad[i + 1]:
         i += 1
         leika_now -= grad[i]
@@ -57,14 +59,13 @@ while i < len(grad) - 1:
         leika_now = leika_old
 
 # Вывод значений grad после обработки
-print(" ".join(map(str, grad)))
 print(steps)
 
 # Задание №3.18
 print("Задание №3.18")
 n = int(input("Кол-во чисел: "))
 for j in range(n):
-    num = int(input("Введите число: "))
+    num = int(input("Введите число: ")) #ввод
     num_tex = num
     num_r = 0
 

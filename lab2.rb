@@ -1,14 +1,13 @@
 # Задание №1.2
 puts "Задание №1.2"
-str = "abc1231de45f42"  # abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+str = "abc1231de45f42"  # введённая строка
 max_sum = 0
 numb = 0
 
-str.each_char do |char|
-  a = char.ord
+str.each_char do |char| #цикл char - элемент строки
+  a = char.ord #преобразование в целое число
   if ('0'.ord <= a && a <= '9'.ord) # Проверка на цифру
     numb += a - '0'.ord
-    puts "#{a - '0'.ord} #{numb}"
   else
     max_sum = [max_sum, numb].max
     numb = 0
@@ -43,9 +42,13 @@ grad << a_f if a_f > 0
 # Вывод значений grad
 puts grad.join(" ")
 
-# Логика для подсчета шагов
+# подсчет шагов
 i = 0
 while i < grad.length - 1
+  if leika_old < grad[i+1]
+    puts "Ошибка"
+    exit
+  end
   if leika_now >= grad[i + 1]
     i += 1
     leika_now -= grad[i]
@@ -61,14 +64,13 @@ while i < grad.length - 1
 end
 
 # Вывод значений grad после обработки
-puts grad.join(" ")
 puts steps
 
 # Задание №3.18
 puts "Задание №3.18"
 print "Кол-во чисел: "
 n = gets.to_i
-(0...n).each do |j|
+(0...n).each do |j| # цикл while (j <= n; j++)
   print "Введите число: "
   num = gets.to_i
   num_tex = num

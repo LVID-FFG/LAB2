@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class lab2 {
+public class Main {
     public static void main(String[] args) {
         // задание №1.2-------------------------------------------------------------------------------------
         System.out.println("задание №1.2");
-        String is = "abc1231def42"; // abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+        String is = "abc1231def42"; // введённая строка
         int max = 0;
         int numb = 0;
 
@@ -13,7 +13,6 @@ public class lab2 {
             char a = is.charAt(i);
             if ( '0' <= a && a <= '9') {
                 numb += a - '0';
-                System.out.println(a - '0' + " " + numb);
             } else {
                 if (max < numb) {
                     max = numb;
@@ -28,7 +27,7 @@ public class lab2 {
         // задание №2.8-------------------------------------------------------------------------------------
         System.out.println("Задание  №2.8");
         
-        ArrayList<Integer> grad = new ArrayList<>(); // Инициализация списка grad
+        ArrayList<Integer> grad = new ArrayList<>(); // список, аналог вектора
         grad.add(0);
         
         int steps = 0;
@@ -60,9 +59,13 @@ public class lab2 {
         }
         System.out.println();
 
-        // Логика для подсчета шагов
-        int i = 0; // Переменная i должна быть инициализирована
+        // шагаем по грядке пока не достигнем конца, если воды хватает поливаем и идём вперёд, иначе возвращаемся в конец
+        int i = 0;
         while (i < grad.size() - 1) {
+            if (leika_old < grad.get(i+1)){
+                System.out.println("Ошибка");
+                return;
+            }
             if (leika_now >= grad.get(i + 1)) {
                 i++;
                 leika_now -= grad.get(i);
@@ -76,17 +79,11 @@ public class lab2 {
                 leika_now = leika_old;
             }
         }
-
-        // Вывод значений grad после обработки
-        for (int k : grad) {
-            System.out.print(k + " ");
-        }
-        System.out.println();
         System.out.println(steps);
         // №3.18-------------------------------------------------------------------------------------
         System.out.println("Задание  №3.18");
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Кол-во чисел: ");
+        Scanner scanner = new Scanner(System.in); // создание объекта класса Scanner и связывание его с клавиатурой для ввода данных
         int n = scanner.nextInt();
         int num;
         int num_r;
@@ -109,6 +106,6 @@ public class lab2 {
                 System.out.println(num_r - num);
             }
         }
-        scanner.close();
+        scanner.close(); // прекращение ввода
     }
 }

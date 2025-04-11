@@ -1,6 +1,6 @@
 // Задание №1.2
 print("Задание №1.2")
-let inputString = "abc1231de45f42" // abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+let inputString = "abc1231de45f42" // введённая строка
 var maxSum = 0
 var numb = 0
 
@@ -8,7 +8,6 @@ for char in inputString {
     let a = Int(char.asciiValue!)
     if a >= Int(Character("0").asciiValue!) && a <= Int(Character("9").asciiValue!) { // Проверка на цифру
         numb += a - Int(Character("0").asciiValue!)
-        print("\(a - Int(Character("0").asciiValue!)) \(numb)")
     } else {
         if maxSum < numb {
             maxSum = numb
@@ -54,9 +53,13 @@ while k < grad.count{
     k += 1
 }
 print("")
-// Логика для подсчета шагов
+// подсчет шагов
 var i = 0
 while i < grad.count - 1 {
+    if leikaOld < grad[i+1]{
+        print("Ошибка")
+        break
+    }
     if leikaNow >= grad[i + 1] {
         i += 1
         leikaNow -= grad[i]
@@ -71,17 +74,12 @@ while i < grad.count - 1 {
     }
 }
 
-// Вывод значений grad после обработки
-var j = 0
-while j < grad.count{
-    print(grad[j], terminator: " ")
-    j += 1
-}
-print("")
+// Вывод значений
+print(steps)
 // Задание №3.18
 print("Задание №3.18")
 print("Кол-во чисел: ")
-if let n = Int(readLine() ?? "") {
+if let n = Int(readLine() ?? "") { 
     for _ in 0..<n {
         print("Введите число: ")
         if let input = readLine(), let num = Int(input) {

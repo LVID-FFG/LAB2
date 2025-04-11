@@ -1,6 +1,6 @@
 // Задание №1.2-------------------------------------------------------------------------------------
 console.log("Задание №1.2");
-let str = "abc1231def42"; // abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+let str = "abc1231def42"; // введённая строка
 let max = 0;
 let numb = 0;
 
@@ -8,7 +8,6 @@ for (let i = 0; i < str.length; i++) {
     let a = str.charAt(i);
     if ('0' <= a && a <= '9') {
         numb += parseInt(a);
-        console.log(parseInt(a) + " " + numb);
     } else {
         if (max < numb) {
             max = numb;
@@ -50,9 +49,13 @@ if (a_f > 0) {
 // Вывод значений grad
 console.log(grad.join(" "));
 
-// Логика для подсчета шагов
-let i = 0; // Переменная i должна быть инициализирована
+// шагаем по грядке пока не достигнем конца, если воды хватает поливаем и идём вперёд, иначе возвращаемся в конец
+let i = 0;
 while (i < grad.length - 1) {
+    if (leikaOld < grad[i+1]){
+        console.log("Ошибка");
+        throw 0;
+    }
     if (leikaNow >= grad[i + 1]) {
         i++;
         leikaNow -= grad[i];
@@ -67,13 +70,12 @@ while (i < grad.length - 1) {
     }
 }
 
-// Вывод значений grad после обработки
-console.log(grad.join(" "));
+// Вывод значений
 console.log(steps);
 // Задание №3.18-------------------------------------------------------------------------------------
 console.log("Задание №3.18");
 console.log("Кол-во чисел: ");
-let n = parseInt(prompt());
+let n = parseInt(prompt()); //ввод и преобразование полученного в int
 let num;
 let numR;
 let numTex;

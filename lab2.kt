@@ -1,7 +1,7 @@
 fun main() {
     // Задание №1.2
     println("Задание №1.2")
-    val inputString = "abc1231de45f42" //abc1234def4256gh789ab999c14234def516gh789abc12314def56gh789
+    val inputString = "abc1231de45f42" //введённая строка
     var max = 0
     var numb = 0
 
@@ -9,7 +9,6 @@ fun main() {
         val a = char.toInt()
         if (a in '0'.toInt()..'9'.toInt()) { // Проверка на цифру
             numb += a - '0'.toInt()
-            println("${a - '0'.toInt()} $numb")
         } else {
             if (max < numb) {
                 max = numb
@@ -30,7 +29,7 @@ fun main() {
     val str2 = "2 2 3 3 3 5"
     var a_f = 0
 
-    // Обработка строки для извлечения чисел
+    // заполнение grad
     for (char in str2) {
         val a = char.toInt()
         if (a in '0'.toInt()..'9'.toInt()) { // Проверка на цифру
@@ -47,11 +46,15 @@ fun main() {
     }
 
     // Вывод значений grad
-    println(grad.joinToString(" "))
+    println(grad.joinToString(" ")) // объединение в строку с разделителем " "
 
-    // Логика для подсчета шагов
+    // подсчет шагов
     var i = 0
     while (i < grad.size - 1) {
+        if (leika_old < grad[i + 1]){
+            println("Ошибка")
+            return;
+        }
         if (leika_now >= grad[i + 1]) {
             i++
             leika_now -= grad[i]
@@ -66,13 +69,12 @@ fun main() {
         }
     }
 
-    // Вывод значений grad после обработки
-    println(grad.joinToString(" "))
+    // Вывод значений
     println(steps)
     // Задание №3.18
     println("Задание №3.18")
     println("Кол-во чисел: ")
-    val n = readLine()!!.toInt()
+    val n = readLine()!!.toInt() //ввод целого числа
     var num: Int
     var numR: Int
     var numTex: Int

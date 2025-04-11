@@ -1,6 +1,6 @@
 // Задание №1.2
 console.log("задание №1.2");
-const inputString: string = "abc1231de45f42"; // abc1234def4256gh789ab999c14234def516gh789
+const inputString: string = "abc1231de45f42"; // введённая строка
 let max: number = 0;
 let numb: number = 0;
 
@@ -8,7 +8,6 @@ for (let i = 0; i < inputString.length; i++) {
     const a: number = inputString.charCodeAt(i);
     if (a >= '0'.charCodeAt(0) && a <= '9'.charCodeAt(0)) { // Проверка на цифру
         numb += a - '0'.charCodeAt(0);
-        console.log(a - '0'.charCodeAt(0), " ", numb);
     } else {
         if (max < numb) {
             max = numb;
@@ -44,9 +43,13 @@ aF = 0;
 
 // Вывод значений grad
 console.log(grad.join(" "));
-
+// подсчёт шагов
 let i = 0;
 while (i < grad.length - 1) {
+    if (leikaOld < grad[i+1]) {
+        console.log("Ошибка");
+        break;
+    }
     if (leikaNow >= grad[i + 1]) {
         i++;
         leikaNow -= grad[i];
@@ -61,13 +64,12 @@ while (i < grad.length - 1) {
     }
 }
 
-// Вывод значений grad после обработки
-console.log(grad.join(" "));
+// Вывод значений
 console.log(steps);
 
 // Задание №3.18
 console.log("задание №3.18");
-const n: number = parseInt(prompt("Кол-во чисел: ") || "0");
+const n: number = parseInt(prompt("Кол-во чисел: ") || "0"); // ввод
 let num: number;
 let numR: number;
 let numTex: number;
